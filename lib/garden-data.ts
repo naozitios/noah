@@ -2,7 +2,7 @@ import fs from "fs"
 import path from "path"
 import matter from "gray-matter"
 
-export type PillarId = "research" | "frameworks" | "building"
+export type PillarId = "products" | "investments" | "principles" | "assumptions"
 export type PageId = "home" | PillarId
 
 export type Pillar = {
@@ -24,9 +24,6 @@ export type Entry = {
   date?: string
   href?: string
   image?: string
-  colSpan?: 1 | 2
-  rowSpan?: 1 | 2
-  accent?: boolean
 }
 
 const contentDir = path.join(process.cwd(), "content")
@@ -64,9 +61,6 @@ function parseEntryFile(file: string): Entry {
     date: data.date as string | undefined,
     href: data.href as string | undefined,
     image: data.image as string | undefined,
-    colSpan: data.colSpan as 1 | 2 | undefined,
-    rowSpan: data.rowSpan as 1 | 2 | undefined,
-    accent: data.accent as boolean | undefined,
   }
 }
 

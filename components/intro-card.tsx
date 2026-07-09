@@ -31,20 +31,20 @@ export function IntroCard({ onNavigate }: { onNavigate?: (page: PageId) => void 
           <h1 className="text-pretty font-sans text-4xl leading-tight text-foreground sm:text-5xl lg:text-6xl">
             Hey, I&apos;m Noah{" "}
             <span aria-hidden>👋</span> I{" "}
-            <button onClick={() => onNavigate?.("research")} className={linkClass}>research</button>
+            <button onClick={() => onNavigate?.("investments")} className={linkClass}>research</button>
             ,{" "}
-            <button onClick={() => onNavigate?.("building")} className={linkClass}>build</button>
+            <button onClick={() => onNavigate?.("products")} className={linkClass}>build</button>
             , and think about{" "}
-            <button onClick={() => onNavigate?.("frameworks")} className={linkClass}>tough concepts</button>.
+            <button onClick={() => onNavigate?.("principles")} className={linkClass}>tough concepts</button>.
           </h1>
 
           <p className="max-w-3xl text-pretty text-lg leading-relaxed text-muted-foreground sm:text-xl">
             This garden is where I explore{" "}
-            <button onClick={() => onNavigate?.("research")} className={linkClass}>companies, products, and investments</button>
+            <button onClick={() => onNavigate?.("products")} className={linkClass}>products and investments</button>
             , collect{" "}
-            <button onClick={() => onNavigate?.("frameworks")} className={linkClass}>mental models</button>
+            <button onClick={() => onNavigate?.("principles")} className={linkClass}>principles</button>
             , and document{" "}
-            <button onClick={() => onNavigate?.("building")} className={linkClass}>things I&apos;m making</button>.
+            <button onClick={() => onNavigate?.("assumptions")} className={linkClass}>assumptions</button>.
             Some is finished, most is half-grown. Wander around.
           </p>
         </div>

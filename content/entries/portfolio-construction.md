@@ -1,11 +1,11 @@
 ---
 id: portfolio-construction
-pillar: frameworks
-subsection: Investing
+pillar: investments
+subsection: Existing takes
 title: Portfolio Construction for Indie Investors
-meta: "Guide · 8 min"
-date: "Dec 2024"
-href: "#portfolio-construction"
+meta: Guide · 8 min
+date: Dec 2024
+href: '#portfolio-construction'
 ---
 
 If you're writing $10k cheques as an angel, you can't use VC portfolio maths. Your edge isn't diversification — it's pattern recognition and the ability to back weird, non-consensus ideas that institutions can't touch.

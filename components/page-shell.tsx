@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useRef, useEffect } from "react"
-import { Home, BookOpen, Grid3X3, Hammer, Moon, Sun, AtSign, Link2 } from "lucide-react"
+import { Home, Package, TrendingUp, BookOpen, Lightbulb, Moon, Sun, AtSign, Link2 } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { type Pillar, type Entry, type PageId } from "@/lib/garden-data"
 import { useTheme } from "next-themes"
@@ -11,9 +11,10 @@ import { SiteFooter } from "@/components/site-footer"
 
 const navLinks: { id: PageId; label: string; icon: React.ReactNode }[] = [
   { id: "home", label: "Home", icon: <Home className="h-4 w-4" /> },
-  { id: "research", label: "Research", icon: <BookOpen className="h-4 w-4" /> },
-  { id: "frameworks", label: "Frameworks", icon: <Grid3X3 className="h-4 w-4" /> },
-  { id: "building", label: "Building", icon: <Hammer className="h-4 w-4" /> },
+  { id: "products", label: "Products", icon: <Package className="h-4 w-4" /> },
+  { id: "investments", label: "Investments", icon: <TrendingUp className="h-4 w-4" /> },
+  { id: "principles", label: "Principles", icon: <BookOpen className="h-4 w-4" /> },
+  { id: "assumptions", label: "Assumptions", icon: <Lightbulb className="h-4 w-4" /> },
 ]
 
 export function PageShell({
@@ -53,7 +54,7 @@ export function PageShell({
               data-page={link.id}
               onClick={() => setActivePage(link.id)}
               className={cn(
-                "flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-sm font-medium transition-colors sm:px-3",
+                "flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-sm font-medium transition-colors duration-300 sm:px-3",
                 activePage === link.id
                   ? "text-primary"
                   : "text-muted-foreground hover:text-foreground",

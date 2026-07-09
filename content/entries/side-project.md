@@ -1,12 +1,11 @@
 ---
 id: side-project
-pillar: building
-subsection: Projects
+pillar: products
+subsection: Killed
 title: Tempo — A Scheduling App Built in Public
-meta: "Case study · 12 min"
-date: "Jun 2025"
-href: "#side-project"
-colSpan: 2
+meta: Case study · 12 min
+date: Jun 2025
+href: '#side-project'
 accent: true
 ---
 
