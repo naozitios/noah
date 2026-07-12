@@ -1,19 +1,14 @@
-import { NextResponse } from 'next/server';
-import { getDb } from '@/db';
-import { media } from '@/db/schema';
-import { handleError } from '@/lib/api/errors';
-import { desc } from 'drizzle-orm';
+import { NextRequest, NextResponse } from 'next/server'
+import { handleError } from '@/lib/api/errors'
+import { requireAuth } from '@/lib/api/auth-middleware'
+import { listMedia } from '@/lib/api/media-service'
 
-export async function GET() {
+export async function GET(request: NextRequest) {
   try {
-    const db = getDb();
-    const result = await db
-      .select()
-      .from(media)
-      .orderBy(desc(media.createdAt));
-
-    return NextResponse.json({ media: result });
+    await requireAuth(request)
+    const result = await listMedia()
+    return NextResponse.json({ media: result })
   } catch (err) {
-    return handleError(err);
+    return handleError(err)
   }
 }

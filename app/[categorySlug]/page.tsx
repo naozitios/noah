@@ -1,6 +1,11 @@
 import { getPillars, getEntries } from "@/lib/garden-data"
+import { formatDate } from "@/lib/utils"
 import { notFound } from "next/navigation"
 import Link from "next/link"
+
+export function generateStaticParams() {
+  return getPillars().map((p) => ({ categorySlug: p.id }))
+}
 
 export default async function CategoryPage({
   params,
@@ -51,7 +56,7 @@ export default async function CategoryPage({
                   <p className="mt-1 text-sm text-muted-foreground">{entry.description}</p>
                   {entry.date && (
                     <time className="mt-1 text-xs text-muted-foreground block">
-                      {entry.date}
+                      {formatDate(String(entry.date))}
                     </time>
                   )}
                 </Link>

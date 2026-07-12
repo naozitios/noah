@@ -83,6 +83,7 @@ src/
 ## 4. Imports
 
 - **No default exports** — always use named exports (better refactoring, explicit imports)
+- **Exception:** Next.js page and layout files require default exports — these are exempt from the named-only rule
 - Absolute imports for cross-directory references (configure path aliases)
 - Group and order imports:
 

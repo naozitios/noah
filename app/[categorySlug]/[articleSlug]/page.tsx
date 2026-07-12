@@ -1,8 +1,17 @@
-import { getEntryById } from "@/lib/garden-data"
-import { formatDate } from "@/lib/utils"
+import { getEntryById, getEntries } from "@/lib/garden-data"
 import { notFound } from "next/navigation"
 import Link from "next/link"
 import { Markdown } from "@/components/markdown"
+import { ArticleMeta } from "@/components/article-meta"
+import { Breadcrumb } from "@/components/breadcrumb"
+import { PrevNextNav } from "@/components/prev-next-nav"
+
+export function generateStaticParams() {
+  return getEntries().map((e) => ({
+    categorySlug: e.pillar,
+    articleSlug: e.id,
+  }))
+}
 
 export default async function ArticlePage({
   params,
@@ -14,6 +23,11 @@ export default async function ArticlePage({
 
   if (!entry || entry.pillar !== categorySlug) notFound()
 
+  const allEntries = getEntries()
+  const currentIndex = allEntries.findIndex((e) => e.id === entry.id)
+  const prev = currentIndex > 0 ? allEntries[currentIndex - 1] : null
+  const next = currentIndex < allEntries.length - 1 ? allEntries[currentIndex + 1] : null
+
   return (
     <div className="min-h-screen bg-background text-foreground">
       <header className="border-b border-border px-4 sm:px-6 py-3 flex items-center justify-between">
@@ -23,22 +37,13 @@ export default async function ArticlePage({
       </header>
 
       <main className="mx-auto max-w-3xl px-4 py-10 sm:py-14">
-        <nav className="text-sm text-muted-foreground mb-6">
-          <Link href="/" className="hover:text-foreground">Home</Link>
-          <span className="mx-2">/</span>
-          <Link href={`/${categorySlug}`} className="hover:text-foreground">
-            {categorySlug}
-          </Link>
-        </nav>
+        <Breadcrumb items={[
+          { label: "Home", href: "/" },
+          { label: categorySlug, href: `/${categorySlug}` },
+        ]} />
 
         <article>
-          <div className="flex items-center gap-2 text-xs text-muted-foreground mb-3">
-            {entry.subsection && (
-              <span className="rounded-full bg-secondary px-2.5 py-0.5 font-medium">{entry.subsection}</span>
-            )}
-            {entry.date && <span>{formatDate(entry.date)}</span>}
-            <span>· {entry.readingTime} min read</span>
-          </div>
+          <ArticleMeta entry={entry} />
 
           <h1 className="text-3xl font-bold leading-tight sm:text-4xl">{entry.title}</h1>
 
@@ -48,6 +53,8 @@ export default async function ArticlePage({
             </div>
           </div>
         </article>
+
+        <PrevNextNav prev={prev} next={next} />
       </main>
     </div>
   )

@@ -28,6 +28,9 @@ export type Entry = {
 
 const contentDir = path.join(process.cwd(), "content")
 
+let _pillarsCache: Pillar[] | null = null
+let _entriesCache: Entry[] | null = null
+
 function calculateReadingTime(text: string): number {
   const wordsPerMinute = 200
   const words = text.trim().split(/\s+/).length
@@ -35,10 +38,11 @@ function calculateReadingTime(text: string): number {
 }
 
 export function getPillars(): Pillar[] {
+  if (_pillarsCache) return _pillarsCache
   const dir = path.join(contentDir, "pillars")
   const files = fs.readdirSync(dir).filter((f) => f.endsWith(".md"))
 
-  return files.map((file) => {
+  _pillarsCache = files.map((file) => {
     const source = fs.readFileSync(path.join(dir, file), "utf-8")
     const { data } = matter(source)
     return {
@@ -48,6 +52,8 @@ export function getPillars(): Pillar[] {
       subsections: (data.subsections ?? []) as string[],
     }
   })
+
+  return _pillarsCache
 }
 
 function parseEntryFile(file: string, pillar: string, subsection: string): Entry {
@@ -94,8 +100,10 @@ function readEntriesRecursively(dir: string, baseDir: string = dir): Entry[] {
 }
 
 export function getEntries(): Entry[] {
+  if (_entriesCache) return _entriesCache
   const dir = path.join(contentDir, "entries")
-  return readEntriesRecursively(dir)
+  _entriesCache = readEntriesRecursively(dir)
+  return _entriesCache
 }
 
 export function getEntryById(id: string): Entry | undefined {

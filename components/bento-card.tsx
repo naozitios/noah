@@ -66,7 +66,7 @@ export function BentoCard({ entry }: { entry: Entry }) {
   return (
     <a
       ref={cardRef}
-      href={`/blog/${entry.id}`}
+      href={`/${entry.pillar}/${entry.id}`}
       className="group relative overflow-hidden rounded-3xl border border-border bg-card p-6 transition-all duration-300 hover:scale-[1.02] hover:shadow-xl h-[280px]"
       style={{
         "--mouse-x": `${mousePos.x}%`,

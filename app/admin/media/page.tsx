@@ -1,67 +1,100 @@
-'use client';
+'use client'
 
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef, useCallback } from 'react'
+import { useRouter } from 'next/navigation'
 
 interface MediaItem {
-  id: string;
-  filename: string;
-  path: string;
-  mimeType: string | null;
-  sizeBytes: number | null;
-  createdAt: string;
+  id: string
+  filename: string
+  path: string
+  mimeType: string | null
+  sizeBytes: number | null
+  createdAt: string
 }
 
 export default function MediaPage() {
-  const [media, setMedia] = useState<MediaItem[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [uploading, setUploading] = useState(false);
-  const fileRef = useRef<HTMLInputElement>(null);
+  const [media, setMedia] = useState<MediaItem[]>([])
+  const [loading, setLoading] = useState(true)
+  const [uploading, setUploading] = useState(false)
+  const fileRef = useRef<HTMLInputElement>(null)
+  const router = useRouter()
 
-  const load = () => {
-    setLoading(true);
-    fetch('/api/media')
-      .then((r) => r.json())
+  const getAuthHeaders = () => {
+    const token = localStorage.getItem('admin_token')
+    if (!token) {
+      router.push('/admin/login')
+      return null
+    }
+    return { Authorization: `Bearer ${token}` }
+  }
+
+  const handleUnauthorized = (res: Response) => {
+    if (res.status === 401) {
+      localStorage.removeItem('admin_token')
+      router.push('/admin/login')
+    }
+  }
+
+  const load = useCallback(() => {
+    const headers = getAuthHeaders()
+    if (!headers) return
+
+    setLoading(true)
+    fetch('/api/media', { headers })
+      .then((res) => {
+        handleUnauthorized(res)
+        return res.json()
+      })
       .then((data) => setMedia(data.media || []))
       .catch(() => setMedia([]))
-      .finally(() => setLoading(false));
-  };
+      .finally(() => setLoading(false))
+  }, [router])
 
-  useEffect(load, []);
+  useEffect(() => { load() }, [load])
 
   const upload = async () => {
-    const file = fileRef.current?.files?.[0];
-    if (!file) return;
+    const file = fileRef.current?.files?.[0]
+    if (!file) return
 
-    setUploading(true);
-    const form = new FormData();
-    form.append('file', file);
+    const headers = getAuthHeaders()
+    if (!headers) return
+
+    setUploading(true)
+    const form = new FormData()
+    form.append('file', file)
 
     try {
-      await fetch('/api/media/upload', { method: 'POST', body: form });
-      load();
+      const res = await fetch('/api/media/upload', { method: 'POST', body: form, headers })
+      handleUnauthorized(res)
+      load()
     } catch (err) {
-      console.error('Upload failed', err);
+      console.error('Upload failed', err)
     } finally {
-      setUploading(false);
-      if (fileRef.current) fileRef.current.value = '';
+      setUploading(false)
+      if (fileRef.current) fileRef.current.value = ''
     }
-  };
+  }
 
   const remove = async (id: string) => {
-    if (!confirm('Delete this file?')) return;
-    await fetch(`/api/media/${id}`, { method: 'DELETE' });
-    load();
-  };
+    if (!confirm('Delete this file?')) return
+
+    const headers = getAuthHeaders()
+    if (!headers) return
+
+    const res = await fetch(`/api/media/${id}`, { method: 'DELETE', headers })
+    handleUnauthorized(res)
+    load()
+  }
 
   const formatBytes = (bytes: number | null) => {
-    if (!bytes) return '';
-    const kb = bytes / 1024;
-    return kb > 1024 ? `${(kb / 1024).toFixed(1)} MB` : `${Math.round(kb)} KB`;
-  };
+    if (!bytes) return ''
+    const kb = bytes / 1024
+    return kb > 1024 ? `${(kb / 1024).toFixed(1)} MB` : `${Math.round(kb)} KB`
+  }
 
   const copyPath = (path: string) => {
-    navigator.clipboard.writeText(path);
-  };
+    navigator.clipboard.writeText(path)
+  }
 
   return (
     <div>
@@ -98,5 +131,5 @@ export default function MediaPage() {
         </div>
       )}
     </div>
-  );
+  )
 }
