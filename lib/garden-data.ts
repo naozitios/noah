@@ -44,15 +44,15 @@ export function getPillars(): Pillar[] {
   })
 }
 
-function parseEntryFile(file: string): Entry {
-  const source = fs.readFileSync(path.join(contentDir, "entries", file), "utf-8")
+function parseEntryFile(file: string, pillar: string, subsection: string): Entry {
+  const source = fs.readFileSync(file, "utf-8")
   const { data, content } = matter(source)
   const body = content.trim()
   const description = body.split("\n")[0] ?? body.slice(0, 200)
   return {
     id: data.id as string,
-    pillar: data.pillar as PillarId,
-    subsection: data.subsection as string,
+    pillar: (data.pillar ?? pillar) as PillarId,
+    subsection: (data.subsection ?? subsection) as string,
     title: data.title as string,
     description,
     body,
@@ -64,20 +64,78 @@ function parseEntryFile(file: string): Entry {
   }
 }
 
+function readEntriesRecursively(dir: string, baseDir: string = dir): Entry[] {
+  const entries: Entry[] = []
+  const items = fs.readdirSync(dir)
+
+  items.forEach((item) => {
+    const fullPath = path.join(dir, item)
+    const stat = fs.statSync(fullPath)
+
+    if (stat.isDirectory()) {
+      entries.push(...readEntriesRecursively(fullPath, baseDir))
+    } else if (item.endsWith(".md")) {
+      const relativePath = path.relative(baseDir, fullPath)
+      const parts = relativePath.split(path.sep)
+      const pillar = parts[0]
+      const subsection = parts[1]
+      entries.push(parseEntryFile(fullPath, pillar, subsection))
+    }
+  })
+
+  return entries
+}
+
 export function getEntries(): Entry[] {
   const dir = path.join(contentDir, "entries")
-  const files = fs.readdirSync(dir).filter((f) => f.endsWith(".md"))
-  return files.map(parseEntryFile)
+  return readEntriesRecursively(dir)
 }
 
 export function getEntryById(id: string): Entry | undefined {
   const dir = path.join(contentDir, "entries")
-  const file = fs.readdirSync(dir).find((f) => f.replace(/\.md$/, "") === id)
-  if (!file) return undefined
-  return parseEntryFile(file)
+  
+  function findEntry(currentDir: string): Entry | undefined {
+    const items = fs.readdirSync(currentDir)
+    
+    for (const item of items) {
+      const fullPath = path.join(currentDir, item)
+      const stat = fs.statSync(fullPath)
+      
+      if (stat.isDirectory()) {
+        const found = findEntry(fullPath)
+        if (found) return found
+      } else if (item.replace(/\.md$/, "") === id) {
+        const relativePath = path.relative(dir, fullPath)
+        const parts = relativePath.split(path.sep)
+        return parseEntryFile(fullPath, parts[0], parts[1])
+      }
+    }
+    return undefined
+  }
+  
+  return findEntry(dir)
 }
 
 export function getAllEntryIds(): string[] {
   const dir = path.join(contentDir, "entries")
-  return fs.readdirSync(dir).filter((f) => f.endsWith(".md")).map((f) => f.replace(/\.md$/, ""))
+  
+  function collectIds(currentDir: string): string[] {
+    const ids: string[] = []
+    const items = fs.readdirSync(currentDir)
+    
+    items.forEach((item) => {
+      const fullPath = path.join(currentDir, item)
+      const stat = fs.statSync(fullPath)
+      
+      if (stat.isDirectory()) {
+        ids.push(...collectIds(fullPath))
+      } else if (item.endsWith(".md")) {
+        ids.push(item.replace(/\.md$/, ""))
+      }
+    })
+    
+    return ids
+  }
+  
+  return collectIds(dir)
 }
