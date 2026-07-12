@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { db } from '@/db';
+import { getDb } from '@/db';
 import { media } from '@/db/schema';
 import { AppError, handleError } from '@/lib/api/errors';
 import { eq } from 'drizzle-orm';
@@ -8,6 +8,7 @@ import path from 'path';
 
 export async function DELETE(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   try {
+    const db = getDb();
     const { id } = await params;
 
     const [entry] = await db

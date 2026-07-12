@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { db } from '@/db';
+import { getDb } from '@/db';
 import { media } from '@/db/schema';
 import { handleError } from '@/lib/api/errors';
 import { writeFile, mkdir } from 'fs/promises';
@@ -7,6 +7,7 @@ import path from 'path';
 
 export async function POST(request: NextRequest) {
   try {
+    const db = getDb();
     const formData = await request.formData();
     const file = formData.get('file') as File | null;
 
