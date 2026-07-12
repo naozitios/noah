@@ -1,4 +1,4 @@
-import { getEntryById } from "@/lib/garden-data"
+import { getEntryById, formatDate } from "@/lib/garden-data"
 import { notFound } from "next/navigation"
 import Link from "next/link"
 import { Markdown } from "@/components/markdown"
@@ -35,8 +35,8 @@ export default async function ArticlePage({
             {entry.subsection && (
               <span className="rounded-full bg-secondary px-2.5 py-0.5 font-medium">{entry.subsection}</span>
             )}
-            {entry.date && <span>{entry.date}</span>}
-            {entry.meta && <span>· {entry.meta}</span>}
+            {entry.date && <span>{formatDate(entry.date)}</span>}
+            <span>· {entry.readingTime} min read</span>
           </div>
 
           <h1 className="text-3xl font-bold leading-tight sm:text-4xl">{entry.title}</h1>

@@ -1,10 +1,8 @@
 ---
-id: fail-fast-wrong
 pillar: principles
 title: Why "Fail Fast" Is Wrong
-meta: Reflection · 4 min
+meta: Reflection
 date: Mar 2025
-href: '#fail-fast-wrong'
 subsection: Product Principles
 ---
 

@@ -1,11 +1,9 @@
 ---
-id: stripe-takeaways
 pillar: investments
 subsection: Previous takes
 title: Stripe's Developer-First Flywheel
-meta: Analysis · 8 min
+meta: Analysis
 date: Jun 2025
-href: '#stripe-takeaways'
 accent: true
 ---
 

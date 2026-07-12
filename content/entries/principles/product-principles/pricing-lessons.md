@@ -1,10 +1,8 @@
 ---
-id: pricing-lessons
 pillar: principles
 title: Pricing Is a Product Decision
-meta: Essay · 5 min
+meta: Essay
 date: Apr 2025
-href: '#pricing-lessons'
 subsection: Product Principles
 ---
 

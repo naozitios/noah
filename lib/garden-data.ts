@@ -22,11 +22,23 @@ export type Entry = {
   meta?: string
   status?: string
   date?: string
-  href?: string
   image?: string
+  readingTime: number
 }
 
 const contentDir = path.join(process.cwd(), "content")
+
+function calculateReadingTime(text: string): number {
+  const wordsPerMinute = 200
+  const words = text.trim().split(/\s+/).length
+  return Math.ceil(words / wordsPerMinute)
+}
+
+export function formatDate(dateStr: string): string {
+  const date = new Date(dateStr)
+  if (isNaN(date.getTime())) return dateStr
+  return date.toLocaleDateString("en-US", { month: "short", year: "numeric" })
+}
 
 export function getPillars(): Pillar[] {
   const dir = path.join(contentDir, "pillars")
@@ -49,8 +61,9 @@ function parseEntryFile(file: string, pillar: string, subsection: string): Entry
   const { data, content } = matter(source)
   const body = content.trim()
   const description = body.split("\n")[0] ?? body.slice(0, 200)
+  const id = path.basename(file, ".md")
   return {
-    id: data.id as string,
+    id,
     pillar: (data.pillar ?? pillar) as PillarId,
     subsection: (data.subsection ?? subsection) as string,
     title: data.title as string,
@@ -59,8 +72,8 @@ function parseEntryFile(file: string, pillar: string, subsection: string): Entry
     meta: data.meta as string | undefined,
     status: data.status as string | undefined,
     date: data.date as string | undefined,
-    href: data.href as string | undefined,
     image: data.image as string | undefined,
+    readingTime: calculateReadingTime(body),
   }
 }
 

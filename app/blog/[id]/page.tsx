@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation"
 import Link from "next/link"
 import { ArrowLeft, ArrowRight, Sprout } from "lucide-react"
-import { getEntryById, getAllEntryIds, getEntries } from "@/lib/garden-data"
+import { getEntryById, getAllEntryIds, getEntries, formatDate } from "@/lib/garden-data"
 import { Inter } from "next/font/google"
 import ReactMarkdown from "react-markdown"
 import remarkGfm from "remark-gfm"
@@ -43,8 +43,8 @@ export default async function BlogPostPage({ params }: { params: Promise<{ id: s
         <article>
           <div className="flex items-center gap-2 text-xs text-muted-foreground mb-3">
             <span className="rounded-full bg-secondary px-2.5 py-0.5 font-medium">{entry.subsection}</span>
-            {entry.date && <span>{entry.date}</span>}
-            {entry.meta && <span>· {entry.meta}</span>}
+            {entry.date && <span>{formatDate(entry.date)}</span>}
+            <span>· {entry.readingTime} min read</span>
           </div>
 
           <h1 className="text-3xl font-sans font-bold leading-tight sm:text-4xl">{entry.title}</h1>

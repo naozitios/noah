@@ -1,11 +1,9 @@
 ---
-id: scaling-pain
 pillar: products
 subsection: Shipping
 title: What Broke at 100 Users vs 1000 Users
-meta: Post-mortem · 8 min
+meta: Post-mortem
 date: Jan 2025
-href: '#scaling-pain'
 accent: true
 ---
 

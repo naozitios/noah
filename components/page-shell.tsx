@@ -101,13 +101,13 @@ export function PageShell({
         )}
 
         <div className="ml-auto flex items-center gap-3">
-          <a href="#" className="flex items-center gap-1 text-sm text-muted-foreground transition-colors hover:text-foreground">
-            <AtSign className="h-3.5 w-3.5" /> Substack
+          <a href="https://www.linkedin.com/in/noah-teo/" target="_blank" rel="noreferrer" className="flex items-center gap-1 text-sm text-muted-foreground transition-colors hover:text-foreground">
+            <Link2 className="h-3.5 w-3.5" /> LinkedIn
           </a>
-          <a href="#" className="flex items-center gap-1 text-sm text-muted-foreground transition-colors hover:text-foreground">
+          <a href="https://github.com/naozitios" target="_blank" rel="noreferrer" className="flex items-center gap-1 text-sm text-muted-foreground transition-colors hover:text-foreground">
             <Link2 className="h-3.5 w-3.5" /> GitHub
           </a>
-          <a href="/uploads/NoahTeo.pdf" className="flex items-center gap-1 text-sm text-muted-foreground transition-colors hover:text-foreground" target="_blank">
+          <a href="/uploads/NoahTeo.pdf" className="flex items-center gap-1 text-sm text-muted-foreground transition-colors hover:text-foreground" target="_blank" rel="noreferrer">
             <Link2 className="h-3.5 w-3.5" /> CV
           </a>
           <button

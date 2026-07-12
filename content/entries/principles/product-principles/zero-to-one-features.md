@@ -1,10 +1,8 @@
 ---
-id: zero-to-one-features
 pillar: principles
 title: Zero-to-One Features vs. One-to-Ten
-meta: Mental model · 3 min
+meta: Mental model
 date: Mar 2025
-href: '#zero-to-one-features'
 subsection: Product Principles
 ---
 

@@ -1,10 +1,8 @@
 ---
-id: business-moats
 pillar: principles
 title: Modern Moat Stacking
-meta: Framework · 7 min
+meta: Framework
 date: Jun 2025
-href: '#business-moats'
 subsection: Business Principles
 ---
 

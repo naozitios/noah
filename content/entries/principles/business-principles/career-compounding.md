@@ -1,10 +1,8 @@
 ---
-id: career-compounding
 pillar: principles
 title: Compound Interest in Your Career
-meta: Essay · 5 min
+meta: Essay
 date: May 2025
-href: '#career-compounding'
 subsection: Business Principles
 ---
 

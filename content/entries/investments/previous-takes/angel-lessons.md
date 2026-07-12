@@ -1,11 +1,9 @@
 ---
-id: angel-lessons
 pillar: investments
 subsection: Previous takes
 title: '10 Angel Investments, 2 Exits, What I Learned'
-meta: Retro · 9 min
+meta: Retro
 date: Jan 2025
-href: '#angel-lessons'
 accent: true
 ---
 
