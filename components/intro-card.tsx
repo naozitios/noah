@@ -40,8 +40,8 @@ export function IntroCard({ onNavigate }: { onNavigate?: (page: PageId) => void 
 
           <p className="max-w-3xl text-pretty text-lg leading-relaxed text-muted-foreground sm:text-xl">
             This garden is where I explore ideas and document my learnings. Some are principles, and some are just {" "}
-            <button onClick={() => onNavigate?.("assumptions")} className={linkClass}>assumptions</button>.
-            Wander around.
+            <button onClick={() => onNavigate?.("assumptions")} className={linkClass}>assumptions</button> waiting to be proved/ disproved.
+            Wander around!
           </p>
         </div>
       </div>

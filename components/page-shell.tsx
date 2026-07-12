@@ -107,7 +107,7 @@ export function PageShell({
           <a href="#" className="flex items-center gap-1 text-sm text-muted-foreground transition-colors hover:text-foreground">
             <Link2 className="h-3.5 w-3.5" /> GitHub
           </a>
-          <a href="#" className="flex items-center gap-1 text-sm text-muted-foreground transition-colors hover:text-foreground">
+          <a href="/uploads/NoahTeo.pdf" className="flex items-center gap-1 text-sm text-muted-foreground transition-colors hover:text-foreground" target="_blank">
             <Link2 className="h-3.5 w-3.5" /> CV
           </a>
           <button
