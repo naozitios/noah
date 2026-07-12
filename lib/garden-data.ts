@@ -34,12 +34,6 @@ function calculateReadingTime(text: string): number {
   return Math.ceil(words / wordsPerMinute)
 }
 
-export function formatDate(dateStr: string): string {
-  const date = new Date(dateStr)
-  if (isNaN(date.getTime())) return dateStr
-  return date.toLocaleDateString("en-US", { month: "short", year: "numeric" })
-}
-
 export function getPillars(): Pillar[] {
   const dir = path.join(contentDir, "pillars")
   const files = fs.readdirSync(dir).filter((f) => f.endsWith(".md"))

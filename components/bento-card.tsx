@@ -2,7 +2,7 @@
 
 import { useRef, useState, useEffect, useMemo } from "react"
 import { ArrowUpRight } from "lucide-react"
-import { cn } from "@/lib/utils"
+import { cn, formatDate } from "@/lib/utils"
 import type { Entry } from "@/lib/garden-data"
 
 const statusStyles: Record<string, string> = {
@@ -67,7 +67,7 @@ export function BentoCard({ entry }: { entry: Entry }) {
     <a
       ref={cardRef}
       href={`/blog/${entry.id}`}
-      className="group relative overflow-hidden rounded-3xl border border-border bg-card p-6 transition-all duration-300 hover:scale-[1.02] hover:shadow-xl"
+      className="group relative overflow-hidden rounded-3xl border border-border bg-card p-6 transition-all duration-300 hover:scale-[1.02] hover:shadow-xl h-[280px]"
       style={{
         "--mouse-x": `${mousePos.x}%`,
         "--mouse-y": `${mousePos.y}%`,
@@ -101,7 +101,7 @@ export function BentoCard({ entry }: { entry: Entry }) {
         <h3 className="mt-3 text-pretty font-sans text-xl leading-snug text-foreground sm:text-2xl">
           {title}
         </h3>
-        <p className="mt-2 text-pretty text-sm leading-relaxed text-muted-foreground">
+        <p className="mt-2 text-pretty text-sm leading-relaxed text-muted-foreground line-clamp-3">
           {description}
         </p>
 
@@ -109,7 +109,7 @@ export function BentoCard({ entry }: { entry: Entry }) {
 
         <div className="mt-4 flex items-center justify-between text-xs text-muted-foreground">
           {meta ? <span>{meta}</span> : <span />}
-          {date ? <span className="tabular-nums">{date}</span> : null}
+          {date ? <span className="tabular-nums">{formatDate(date)}</span> : null}
         </div>
       </div>
 

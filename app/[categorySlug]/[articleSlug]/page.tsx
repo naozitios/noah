@@ -1,4 +1,5 @@
-import { getEntryById, formatDate } from "@/lib/garden-data"
+import { getEntryById } from "@/lib/garden-data"
+import { formatDate } from "@/lib/utils"
 import { notFound } from "next/navigation"
 import Link from "next/link"
 import { Markdown } from "@/components/markdown"

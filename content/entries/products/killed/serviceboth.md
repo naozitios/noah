@@ -3,7 +3,7 @@ pillar: products
 subsection: Killed
 title: Tempo — A Scheduling App Built in Public
 meta: Case study
-date: Jun 2025
+date: 2025-06-01
 accent: true
 ---
 
