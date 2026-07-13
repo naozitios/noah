@@ -1,7 +1,11 @@
-import { NextResponse } from 'next/server';
+import { NextResponse } from "next/server";
 
 export class AppError extends Error {
-  constructor(public code: string, message: string, public status: number = 500) {
+  constructor(
+    public code: string,
+    message: string,
+    public status: number = 500,
+  ) {
     super(message);
   }
 }
@@ -14,9 +18,9 @@ export function handleError(err: unknown) {
     );
   }
 
-  console.error('Unhandled error:', err);
+  console.error("Unhandled error:", err);
   return NextResponse.json(
-    { error: { code: 'INTERNAL_ERROR', message: 'Internal server error' } },
+    { error: { code: "INTERNAL_ERROR", message: "Internal server error" } },
     { status: 500 },
   );
 }

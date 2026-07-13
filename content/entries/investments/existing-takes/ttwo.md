@@ -5,6 +5,7 @@ date: 2026-01-03T00:00:00.000Z
 ready: true
 description: TTWO should deliver 4x returns in one year
 ---
+
 ## TTWO should deliver 4x returns in one year
 
 I expect **Take-Two Interactive (TTWO)** to be worth roughly **$1000** in December 2026 **(roughy ~300% growth)**, on a 6.5B EBITDA and a 30 EV/EBITDA multiple (pre GTA6 announcement release multiple) driven by:
@@ -17,27 +18,27 @@ This is not a call on perfect execution — it’s a view that the **market is u
 
 ## 0. Napkin numbers
 
-| *All number are in millions unless otherwise stated* | **2024** | **2025** | **2026E** |
-| --- | --- | --- | --- |
-| **Sales/ Revenue** | 5,350 | 5,634 | 13,000 |
-| **COGS (excluding D&A)** | 824 | 1,209 | 1,500 |
-| **SG&A Expense** | 3,135 | 3,539 | 5,000 |
-| **EBITDA** | 1,391 | 885 | 6,500 |
-| **EV/EBITDA *(base unit)*** | 32 | 54 | 30 |
-| **EV** | 44,512 | 47,790 | 195,000 |
-| **Total Debt** | 4,120 | 3,510 | 4,000 |
-| **Cash** | 2,560 | 2,040 | 2,000 |
-| **Market Cap** | 42,952 | 46,320 | 193,000 |
-| **Outstanding Shares** | 170 | 175 | 190 |
-| **Price *(base unit)*** | 252 | 264 | 1,015 |
+| _All number are in millions unless otherwise stated_ | **2024** | **2025** | **2026E** |
+| ---------------------------------------------------- | -------- | -------- | --------- |
+| **Sales/ Revenue**                                   | 5,350    | 5,634    | 13,000    |
+| **COGS (excluding D&A)**                             | 824      | 1,209    | 1,500     |
+| **SG&A Expense**                                     | 3,135    | 3,539    | 5,000     |
+| **EBITDA**                                           | 1,391    | 885      | 6,500     |
+| **EV/EBITDA _(base unit)_**                          | 32       | 54       | 30        |
+| **EV**                                               | 44,512   | 47,790   | 195,000   |
+| **Total Debt**                                       | 4,120    | 3,510    | 4,000     |
+| **Cash**                                             | 2,560    | 2,040    | 2,000     |
+| **Market Cap**                                       | 42,952   | 46,320   | 193,000   |
+| **Outstanding Shares**                               | 170      | 175      | 190       |
+| **Price _(base unit)_**                              | 252      | 264      | 1,015     |
 
 ## 1. GTA VI is going to be a major revenue driver for TTWO
 
-The core driver of this thesis is **GTA VI**, but not in the simplistic “big launch = big stock pop” sense. 
+The core driver of this thesis is **GTA VI**, but not in the simplistic “big launch = big stock pop” sense.
 
-My **napkin number** for the sales of GTA within the first two weeks is **$8 billion** *(1.5x the yearly TTWO revenues… i know thats crazy but hear me out)*
+My **napkin number** for the sales of GTA within the first two weeks is **$8 billion** _(1.5x the yearly TTWO revenues… i know thats crazy but hear me out)_
 
-I take a forecasted sales count based off the RDR2 2019 first 2 weeks ***sales to average youtube views.*** With an average of 30 million views across the three trailer videos and 23 million sale in the first two weeks of launch, reusing the same model we will expect 115 copies to be sold based on the first GTA trailer views of 270M and 155M. 
+I take a forecasted sales count based off the RDR2 2019 first 2 weeks _**sales to average youtube views.**_ With an average of 30 million views across the three trailer videos and 23 million sale in the first two weeks of launch, reusing the same model we will expect 115 copies to be sold based on the first GTA trailer views of 270M and 155M.
 
 $$
 150M  * 23 / 30 = 115M
@@ -49,7 +50,7 @@ $$
 
 Strong net bookings give us some confidence on the smooth cyclicality of major releases. Not only does it tell us that GTA 6 could generate more revenue than just its sales, but that its other products are doing well.
 
-This tells us that there is **ongoing player engagement** and not just launch spikes. Recurring consumer spend is quite common in TTWO. 
+This tells us that there is **ongoing player engagement** and not just launch spikes. Recurring consumer spend is quite common in TTWO.
 
 This matters because bookings:
 
@@ -87,4 +88,3 @@ GTA 6 has had a history of delaying its releases, causing whipsaws of 10% drawdo
 ### Marketing budget does not exceed 1.5B
 
 The model assumes a $1.5B marketing budget within SG&A for GTA 6. If the actual spend exceeds this, we would expect a smaller EBITDA uplift, as higher costs would reduce profitability
-

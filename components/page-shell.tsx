@@ -1,20 +1,20 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { type Pillar, type Entry, type PageId } from "@/lib/garden-data"
-import { SiteHeader } from "@/components/site-header"
-import { IntroCard } from "@/components/intro-card"
-import { GardenBoard } from "@/components/garden-board"
-import { SiteFooter } from "@/components/site-footer"
+import { useState } from "react";
+import { type Pillar, type Entry, type PageId } from "@/lib/garden-data";
+import { SiteHeader } from "@/components/site-header";
+import { IntroCard } from "@/components/intro-card";
+import { GardenBoard } from "@/components/garden-board";
+import { SiteFooter } from "@/components/site-footer";
 
 export function PageShell({
   pillars,
   entries,
 }: {
-  pillars: Pillar[]
-  entries: Entry[]
+  pillars: Pillar[];
+  entries: Entry[];
 }) {
-  const [activePage, setActivePage] = useState<PageId>("home")
+  const [activePage, setActivePage] = useState<PageId>("home");
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -40,5 +40,5 @@ export function PageShell({
         <SiteFooter />
       </main>
     </div>
-  )
+  );
 }

@@ -8,5 +8,5 @@ description: >-
   — using Bubble, Zapier, and Airtable — and landed three paying customers
   before writing the first real line of production code.
 ---
-Could you validate a SaaS idea without writing a single line of code? I tried — using Bubble, Zapier, and Airtable — and landed three paying customers before writing the first real line of production code.
 
+Could you validate a SaaS idea without writing a single line of code? I tried — using Bubble, Zapier, and Airtable — and landed three paying customers before writing the first real line of production code.

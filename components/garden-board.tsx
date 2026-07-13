@@ -1,35 +1,39 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import { type Pillar, type Entry, type PillarId } from "@/lib/garden-data"
-import { BentoCard } from "@/components/bento-card"
+import { useState, useEffect } from "react";
+import { type Pillar, type Entry, type PillarId } from "@/lib/garden-data";
+import { BentoCard } from "@/components/bento-card";
 
 export function GardenBoard({
   pillars,
   entries,
   initialPillar,
 }: {
-  pillars: Pillar[]
-  entries: Entry[]
-  initialPillar?: PillarId
+  pillars: Pillar[];
+  entries: Entry[];
+  initialPillar?: PillarId;
 }) {
-  const [subsectionFilter, setSubsectionFilter] = useState("")
+  const [subsectionFilter, setSubsectionFilter] = useState("");
 
-  const activePillar = initialPillar ? pillars.find((p) => p.id === initialPillar) : null
+  const activePillar = initialPillar
+    ? pillars.find((p) => p.id === initialPillar)
+    : null;
 
   const pillarEntries = initialPillar
     ? entries.filter((e) => e.pillar === initialPillar)
-    : entries
+    : entries;
 
-  const subsections = [...new Set(pillarEntries.map((e) => e.subsection).filter(Boolean))] as string[]
+  const subsections = [
+    ...new Set(pillarEntries.map((e) => e.subsection).filter(Boolean)),
+  ] as string[];
 
   useEffect(() => {
-    setSubsectionFilter("")
-  }, [initialPillar])
+    setSubsectionFilter("");
+  }, [initialPillar]);
 
   const filteredEntries = subsectionFilter
     ? pillarEntries.filter((e) => e.subsection === subsectionFilter)
-    : pillarEntries
+    : pillarEntries;
 
   return (
     <div className="flex flex-col gap-10">
@@ -57,7 +61,9 @@ export function GardenBoard({
           {subsections.map((sub) => (
             <button
               key={sub}
-              onClick={() => setSubsectionFilter(subsectionFilter === sub ? "" : sub)}
+              onClick={() =>
+                setSubsectionFilter(subsectionFilter === sub ? "" : sub)
+              }
               className={`px-3 py-1.5 rounded-full text-xs font-medium transition-colors duration-300 ${
                 subsectionFilter === sub
                   ? "bg-foreground text-background"
@@ -82,5 +88,5 @@ export function GardenBoard({
         </p>
       )}
     </div>
-  )
+  );
 }

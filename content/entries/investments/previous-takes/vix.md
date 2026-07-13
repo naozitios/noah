@@ -1,15 +1,16 @@
 ---
 title: Shorting the Volatility Index (VIX)
 meta: Analysis
-date: '2025-04-10'
+date: "2025-04-10"
 ready: true
 description: >-
   Why periods of extreme market uncertainty can create attractive opportunities
   to short volatility.
 ---
+
 # Shorting the Volatility Index (VIX)
 
-*April 10, 2025*
+_April 10, 2025_
 
 While much of the market is focused on predicting the next tariff headline, I believe the more important opportunity lies elsewhere.
 
@@ -49,10 +50,10 @@ Historically, spikes of this magnitude have been rare.
 
 Two recent examples stand out:
 
-| Event | Peak Volatility | Outcome |
-|--------|----------------:|---------|
-| COVID-19 Market Shock (March 2020) | Extremely High | Mean reverted over several months |
-| August 2024 Jobs Report Sell-off | Elevated | Mean reverted within weeks |
+| Event                              | Peak Volatility | Outcome                           |
+| ---------------------------------- | --------------: | --------------------------------- |
+| COVID-19 Market Shock (March 2020) |  Extremely High | Mean reverted over several months |
+| August 2024 Jobs Report Sell-off   |        Elevated | Mean reverted within weeks        |
 
 In both cases, volatility eventually normalized as uncertainty declined.
 
@@ -179,4 +180,3 @@ Today's tariff-driven market has produced elevated option premiums and historica
 For that reason, I believe the more compelling investment isn't trying to predict the next headline—it's positioning for the market's eventual return to normalcy.
 
 > **The best time to short fear is often when everyone else is paying the highest price for it.**
-

@@ -1,9 +1,14 @@
-import Image from "next/image"
-import { Sprout } from "lucide-react"
-import { type PageId } from "@/lib/garden-data"
+import Image from "next/image";
+import { Sprout } from "lucide-react";
+import { type PageId } from "@/lib/garden-data";
 
-export function IntroCard({ onNavigate }: { onNavigate?: (page: PageId) => void }) {
-  const linkClass = "font-medium text-primary underline decoration-primary/30 underline-offset-4 hover:decoration-primary transition-colors cursor-pointer"
+export function IntroCard({
+  onNavigate,
+}: {
+  onNavigate?: (page: PageId) => void;
+}) {
+  const linkClass =
+    "font-medium text-primary underline decoration-primary/30 underline-offset-4 hover:decoration-primary transition-colors cursor-pointer";
 
   return (
     <section className="w-full">
@@ -25,30 +30,50 @@ export function IntroCard({ onNavigate }: { onNavigate?: (page: PageId) => void 
               <Sprout className="h-4 w-4" aria-hidden />
               <span className="font-medium">Noah&apos;s digital garden</span>
             </div>
-
           </div>
 
           <h1 className="text-pretty font-sans text-4xl leading-tight text-foreground sm:text-5xl lg:text-6xl">
-            Hey, I&apos;m Noah{" "}
-            <span aria-hidden>👋</span>
+            Hey, I&apos;m Noah <span aria-hidden>👋</span>
           </h1>
 
-          <h2 className="text-pretty font-sans text-2xl leading-snug text-muted-foreground sm:text-3xl">
-            These are the bets i am making in public. From the  {" "}
-              <button onClick={() => onNavigate?.("products")} className={linkClass}>products</button> i build
-              to the <button onClick={() => onNavigate?.("investments")} className={linkClass}>investments</button> {" "} 
-              i document my thinking, track outcomes, and distill the {" "}
-            <button onClick={() => onNavigate?.("principles")} className={linkClass}>principles</button>
-            {" "}   i learn along the way.
-          </h2>
+          <h1 className="text-pretty font-sans text-2xl leading-snug text-foreground sm:text-3xl">
+            These are the bets i am making in public. From the{" "}
+            <button
+              onClick={() => onNavigate?.("products")}
+              className={linkClass}
+            >
+              products
+            </button>{" "}
+            i build to the{" "}
+            <button
+              onClick={() => onNavigate?.("investments")}
+              className={linkClass}
+            >
+              investments
+            </button>{" "}
+            i make. Here i document my thinking, track outcomes, and distill the{" "}
+            <button
+              onClick={() => onNavigate?.("principles")}
+              className={linkClass}
+            >
+              principles
+            </button>{" "}
+            learnt along the way.
+          </h1>
 
           <p className="max-w-3xl text-pretty text-lg leading-relaxed text-muted-foreground sm:text-xl">
-            This garden is where I explore ideas and document my learnings. Some are principles, and some are just {" "}
-            <button onClick={() => onNavigate?.("assumptions")} className={linkClass}>assumptions</button> waiting to be vest.
-            Wander around!
+            This garden is where I explore ideas and document my learnings. Some
+            are principles, and some are just{" "}
+            <button
+              onClick={() => onNavigate?.("assumptions")}
+              className={linkClass}
+            >
+              assumptions
+            </button>{" "}
+            waiting to be vest. Wander around!
           </p>
         </div>
       </div>
     </section>
-  )
+  );
 }

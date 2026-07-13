@@ -1,9 +1,9 @@
-import Link from "next/link"
+import Link from "next/link";
 
 export function Breadcrumb({
   items,
 }: {
-  items: { label: string; href?: string }[]
+  items: { label: string; href?: string }[];
 }) {
   return (
     <nav className="text-sm text-muted-foreground mb-6">
@@ -20,5 +20,5 @@ export function Breadcrumb({
         </span>
       ))}
     </nav>
-  )
+  );
 }

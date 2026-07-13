@@ -1,8 +1,14 @@
-import Link from "next/link"
-import { ArrowLeft, ArrowRight } from "lucide-react"
-import type { Entry } from "@/lib/garden-data"
+import Link from "next/link";
+import { ArrowLeft, ArrowRight } from "lucide-react";
+import type { Entry } from "@/lib/garden-data";
 
-export function PrevNextNav({ prev, next }: { prev: Entry | null; next: Entry | null }) {
+export function PrevNextNav({
+  prev,
+  next,
+}: {
+  prev: Entry | null;
+  next: Entry | null;
+}) {
   return (
     <nav className="mt-16 flex items-center justify-between border-t border-border pt-8">
       {prev ? (
@@ -32,5 +38,5 @@ export function PrevNextNav({ prev, next }: { prev: Entry | null; next: Entry | 
         <div />
       )}
     </nav>
-  )
+  );
 }

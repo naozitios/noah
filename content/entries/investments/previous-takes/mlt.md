@@ -1,14 +1,15 @@
 ---
-title: 'Mapletree Logistics Trust (SGX: M44U)'
+title: "Mapletree Logistics Trust (SGX: M44U)"
 meta: Retro
-date: '2025-05-04'
+date: "2025-05-04"
 ready: true
 accent: true
 description: Is an APAC Logistics REIT Really Recession-Proof?
 ---
+
 # Mapletree Logistics Trust (SGX: M44U)
 
-*May 4, 2025*
+_May 4, 2025_
 
 ## Is an APAC Logistics REIT Really Recession-Proof?
 
@@ -174,11 +175,11 @@ I value MLT using a **Dividend Discount Model (DDM).**
 
 ### Key Assumptions
 
-| Assumption | Value |
-|------------|------:|
-| Estimated DPU | 7.6 cents |
-| Cost of Equity | 9.2% |
-| Terminal Growth Rate | 2.0% |
+| Assumption           |     Value |
+| -------------------- | --------: |
+| Estimated DPU        | 7.6 cents |
+| Cost of Equity       |      9.2% |
+| Terminal Growth Rate |      2.0% |
 
 Under these assumptions, I arrive at a **base case valuation of SGD 1.06**.
 
@@ -276,4 +277,3 @@ Over the long run, MLT is still a quality logistics REIT.
 But quality businesses aren't always attractive investments at every point in the cycle.
 
 For now, I believe patience is the better position.
-

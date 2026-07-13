@@ -1,4 +1,4 @@
-import { z } from 'zod'
+import { z } from "zod";
 
 export const mediaItemSchema = z.object({
   id: z.string(),
@@ -7,10 +7,10 @@ export const mediaItemSchema = z.object({
   mimeType: z.string().nullable(),
   sizeBytes: z.number().nullable(),
   createdAt: z.date().or(z.string()),
-})
+});
 
-export type MediaItem = z.infer<typeof mediaItemSchema>
+export type MediaItem = z.infer<typeof mediaItemSchema>;
 
 export const uploadSchema = z.object({
-  file: z.instanceof(File, { message: 'File is required' }),
-})
+  file: z.instanceof(File, { message: "File is required" }),
+});

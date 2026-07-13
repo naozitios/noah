@@ -1,9 +1,7 @@
-import { type ReactNode } from 'react';
-import Link from 'next/link';
+import { type ReactNode } from "react";
+import Link from "next/link";
 
-const navItems = [
-  { href: '/admin/media', label: 'Media' },
-];
+const navItems = [{ href: "/admin/media", label: "Media" }];
 
 export default function AdminLayout({ children }: { children: ReactNode }) {
   return (
@@ -26,14 +24,15 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
               ))}
             </nav>
           </div>
-          <Link href="/" className="text-xs text-muted-foreground hover:text-foreground">
+          <Link
+            href="/"
+            className="text-xs text-muted-foreground hover:text-foreground"
+          >
             View Site
           </Link>
         </div>
       </header>
-      <main className="mx-auto max-w-7xl px-6 py-8">
-        {children}
-      </main>
+      <main className="mx-auto max-w-7xl px-6 py-8">{children}</main>
     </div>
   );
 }

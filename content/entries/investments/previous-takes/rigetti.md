@@ -1,16 +1,17 @@
 ---
-title: 'Rigetti: Betting on the Future of Quantum Computing'
+title: "Rigetti: Betting on the Future of Quantum Computing"
 description: >-
   An investment thesis on Rigetti Computing, exploring the quantum computing
   opportunity, business model, competitive landscape, valuation, and long-term
   risks.
 meta: Mental model
-date: '2025-09-26'
+date: "2025-09-26"
 ready: true
 ---
+
 # Rigetti Computing (NASDAQ: RGTI)
 
-*June 24, 2025*
+_June 24, 2025_
 
 ## Betting on the Future of Quantum Computing
 
@@ -170,13 +171,13 @@ It's liquidity.
 
 Current position:
 
-| Metric | Value |
-|---------|-------:|
-| Cash & Investments | $575M |
-| Net Cash | ~$564M |
-| Debt | Minimal |
-| Estimated Annual Burn | ~$80M |
-| Cash Runway | Approximately 2032 |
+| Metric                |              Value |
+| --------------------- | -----------------: |
+| Cash & Investments    |              $575M |
+| Net Cash              |             ~$564M |
+| Debt                  |            Minimal |
+| Estimated Annual Burn |              ~$80M |
+| Cash Runway           | Approximately 2032 |
 
 This balance sheet gives management years to continue developing technology without requiring immediate commercial success.
 
@@ -190,12 +191,12 @@ Quantum hardware remains fragmented.
 
 Today's leading approaches include:
 
-| Architecture | Major Companies | Strengths |
-|--------------|----------------|-----------|
+| Architecture    | Major Companies      | Strengths                                   |
+| --------------- | -------------------- | ------------------------------------------- |
 | Superconducting | Rigetti, IBM, Google | Fast gate speeds, manufacturing scalability |
-| Trapped-Ion | IonQ, Quantinuum | High fidelity, long coherence times |
-| Photonic | PsiQuantum | Room temperature operation |
-| Neutral Atom | QuEra | High scalability potential |
+| Trapped-Ion     | IonQ, Quantinuum     | High fidelity, long coherence times         |
+| Photonic        | PsiQuantum           | Room temperature operation                  |
+| Neutral Atom    | QuEra                | High scalability potential                  |
 
 No consensus winner has emerged.
 
@@ -247,11 +248,11 @@ The winner of today's quantum race has not yet been decided.
 
 My March 2026 valuation assumes:
 
-| Assumption | Value |
-|------------|-------:|
-| Expected Revenue | $13.2M |
-| Forward P/S Multiple | 300× |
-| Shares Outstanding | 322.75M |
+| Assumption           |   Value |
+| -------------------- | ------: |
+| Expected Revenue     |  $13.2M |
+| Forward P/S Multiple |    300× |
+| Shares Outstanding   | 322.75M |
 
 This produces a target price of:
 
@@ -292,4 +293,3 @@ For investors comfortable with frontier technology risk, however, Rigetti repres
 The investment isn't about predicting next quarter's earnings.
 
 It's about deciding whether quantum computing becomes one of the defining technologies of the next decade.
-

@@ -1,15 +1,16 @@
 ---
-title: 'CoreWeave: Bullish Today, Bearish Tomorrow?'
+title: "CoreWeave: Bullish Today, Bearish Tomorrow?"
 description: >-
   A discussion on CoreWeave's competitive positioning, long-term risks, and how
   I think about investing in AI infrastructure.
 meta: Mental model
-date: '2025-09-26'
+date: "2025-09-26"
 ready: true
 ---
+
 # CoreWeave: Bullish Today, Bearish Tomorrow?
 
-*September 26, 2025*
+_September 26, 2025_
 
 The **December 2025 $135 price target** for CoreWeave rests on solid fundamentals. Forecasting newly listed companies is inherently difficult, but the assumptions behind a **40× EV/EBIT multiple** and a **CY26 EBIT estimate of $2.57B** are reasonable.
 
@@ -284,4 +285,3 @@ If AI remains concentrated among a handful of hyperscalers and frontier labs, Co
 If AI compute becomes commoditized and thousands of companies build and deploy their own models, CoreWeave could become one of the major beneficiaries.
 
 For now, I'm happy to ride the current momentum—but I'm watching the competitive landscape much more closely than the next earnings report.
-

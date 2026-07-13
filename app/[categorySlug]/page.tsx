@@ -1,36 +1,41 @@
-import { getPillars, getEntries } from "@/lib/garden-data"
-import { formatDate } from "@/lib/utils"
-import { notFound } from "next/navigation"
-import Link from "next/link"
+import { getPillars, getEntries } from "@/lib/garden-data";
+import { formatDate } from "@/lib/utils";
+import { notFound } from "next/navigation";
+import Link from "next/link";
 
 export function generateStaticParams() {
-  return getPillars().map((p) => ({ categorySlug: p.id }))
+  return getPillars().map((p) => ({ categorySlug: p.id }));
 }
 
 export default async function CategoryPage({
   params,
 }: {
-  params: Promise<{ categorySlug: string }>
+  params: Promise<{ categorySlug: string }>;
 }) {
-  const { categorySlug } = await params
-  const pillars = getPillars()
-  const pillar = pillars.find((p) => p.id === categorySlug)
+  const { categorySlug } = await params;
+  const pillars = getPillars();
+  const pillar = pillars.find((p) => p.id === categorySlug);
 
-  if (!pillar) notFound()
+  if (!pillar) notFound();
 
-  const entries = getEntries().filter((e) => e.pillar === categorySlug)
+  const entries = getEntries().filter((e) => e.pillar === categorySlug);
 
   return (
     <div className="min-h-screen bg-background text-foreground">
       <header className="border-b border-border px-4 sm:px-6 py-3 flex items-center justify-between">
-        <Link href="/" className="text-sm text-muted-foreground hover:text-foreground">
+        <Link
+          href="/"
+          className="text-sm text-muted-foreground hover:text-foreground"
+        >
           ← Home
         </Link>
       </header>
 
       <main className="mx-auto max-w-3xl px-4 py-10 sm:py-14">
         <nav className="text-sm text-muted-foreground mb-6">
-          <Link href="/" className="hover:text-foreground">Home</Link>
+          <Link href="/" className="hover:text-foreground">
+            Home
+          </Link>
           <span className="mx-2">/</span>
           <span>{pillar.label}</span>
         </nav>
@@ -53,7 +58,9 @@ export default async function CategoryPage({
                   <h2 className="text-xl font-semibold group-hover:text-primary transition-colors">
                     {entry.title}
                   </h2>
-                  <p className="mt-1 text-sm text-muted-foreground line-clamp-2">{entry.description}</p>
+                  <p className="mt-1 text-sm text-muted-foreground line-clamp-2">
+                    {entry.description}
+                  </p>
                   {entry.date && (
                     <time className="mt-1 text-xs text-muted-foreground block">
                       {formatDate(String(entry.date))}
@@ -66,5 +73,5 @@ export default async function CategoryPage({
         )}
       </main>
     </div>
-  )
+  );
 }
