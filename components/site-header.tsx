@@ -138,7 +138,7 @@ export function SiteHeader({
           GitHub
         </a>
         <a
-          href="/uploads/NoahTeo.pdf"
+          href="/api/media/e83b3400-2370-49f9-a5c3-ba24eee174e3/file"
           className="flex items-center gap-1 text-sm text-muted-foreground transition-colors hover:text-foreground"
           target="_blank"
           rel="noreferrer"

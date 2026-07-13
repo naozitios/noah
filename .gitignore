@@ -1,10 +1,17 @@
 # Environment variables
 .env*.local
 
+# Neon local config
+.neon
+
+# Agent skills
+.agents/
+skills-lock.json
+
 # Common ignores
 node_modules
 .next/
 .DS_Store
 
-# Uploaded media
+# Uploaded media (stored in DB now)
 public/uploads/
