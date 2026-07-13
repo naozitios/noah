@@ -24,6 +24,11 @@ export type Entry = {
   date?: string
   image?: string
   readingTime: number
+  ready: boolean
+}
+
+function isProduction(): boolean {
+  return process.env.NODE_ENV === "production"
 }
 
 const contentDir = path.join(process.cwd(), "content")
@@ -74,6 +79,7 @@ function parseEntryFile(file: string, pillar: string, subsection: string): Entry
     date: data.date as string | undefined,
     image: data.image as string | undefined,
     readingTime: calculateReadingTime(body),
+    ready: data.ready === true,
   }
 }
 
@@ -99,58 +105,25 @@ function readEntriesRecursively(dir: string, baseDir: string = dir): Entry[] {
   return entries
 }
 
-export function getEntries(): Entry[] {
+function loadAllEntries(): Entry[] {
   if (_entriesCache) return _entriesCache
   const dir = path.join(contentDir, "entries")
   _entriesCache = readEntriesRecursively(dir)
   return _entriesCache
 }
 
+export function getEntries(): Entry[] {
+  const all = loadAllEntries()
+  return isProduction() ? all.filter((e) => e.ready) : all
+}
+
 export function getEntryById(id: string): Entry | undefined {
-  const dir = path.join(contentDir, "entries")
-  
-  function findEntry(currentDir: string): Entry | undefined {
-    const items = fs.readdirSync(currentDir)
-    
-    for (const item of items) {
-      const fullPath = path.join(currentDir, item)
-      const stat = fs.statSync(fullPath)
-      
-      if (stat.isDirectory()) {
-        const found = findEntry(fullPath)
-        if (found) return found
-      } else if (item.replace(/\.md$/, "") === id) {
-        const relativePath = path.relative(dir, fullPath)
-        const parts = relativePath.split(path.sep)
-        return parseEntryFile(fullPath, parts[0], parts[1])
-      }
-    }
-    return undefined
-  }
-  
-  return findEntry(dir)
+  const entry = getEntries().find((e) => e.id === id)
+  if (!entry) return undefined
+  if (isProduction() && !entry.ready) return undefined
+  return entry
 }
 
 export function getAllEntryIds(): string[] {
-  const dir = path.join(contentDir, "entries")
-  
-  function collectIds(currentDir: string): string[] {
-    const ids: string[] = []
-    const items = fs.readdirSync(currentDir)
-    
-    items.forEach((item) => {
-      const fullPath = path.join(currentDir, item)
-      const stat = fs.statSync(fullPath)
-      
-      if (stat.isDirectory()) {
-        ids.push(...collectIds(fullPath))
-      } else if (item.endsWith(".md")) {
-        ids.push(item.replace(/\.md$/, ""))
-      }
-    })
-    
-    return ids
-  }
-  
-  return collectIds(dir)
+  return getEntries().map((e) => e.id)
 }

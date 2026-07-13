@@ -3,6 +3,7 @@ pillar: principles
 title: Zero-to-One Features vs. One-to-Ten
 meta: Mental model
 date: 2025-03-01
+ready: false
 subsection: Product Principles
 ---
 

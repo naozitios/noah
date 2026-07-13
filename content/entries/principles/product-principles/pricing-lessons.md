@@ -3,6 +3,7 @@ pillar: principles
 title: Pricing Is a Product Decision
 meta: Essay
 date: 2025-04-01
+ready: false
 subsection: Product Principles
 ---
 

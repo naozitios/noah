@@ -4,6 +4,7 @@ subsection: Killed
 title: Tempo — A Scheduling App Built in Public
 meta: Case study
 date: 2025-06-01
+ready: false
 accent: true
 ---
 

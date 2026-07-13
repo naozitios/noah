@@ -61,13 +61,17 @@ export function BentoCard({ entry }: { entry: Entry }) {
     status,
     date,
     subsection,
+    ready,
   } = entry
 
   return (
     <a
       ref={cardRef}
       href={`/${entry.pillar}/${entry.id}`}
-      className="group relative overflow-hidden rounded-3xl border border-border bg-card p-6 transition-all duration-300 hover:scale-[1.02] hover:shadow-xl h-[280px]"
+      className={cn(
+        "group relative overflow-hidden rounded-3xl border bg-card p-6 transition-all duration-300 hover:scale-[1.02] hover:shadow-xl h-[280px]",
+        ready ? "border-border" : "border-red-500/50 ring-1 ring-red-500/30",
+      )}
       style={{
         "--mouse-x": `${mousePos.x}%`,
         "--mouse-y": `${mousePos.y}%`,
@@ -78,9 +82,16 @@ export function BentoCard({ entry }: { entry: Entry }) {
     >
       <div className="relative z-10 flex h-full flex-col">
         <div className="flex items-start justify-between gap-3">
-          <span className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
-            {subsection}
-          </span>
+          <div className="flex items-center gap-2">
+            <span className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
+              {subsection}
+            </span>
+            {!ready && (
+              <span className="rounded-full bg-red-500/15 px-1.5 py-0.5 text-[10px] font-medium text-red-500">
+                DRAFT
+              </span>
+            )}
+          </div>
           {status ? (
             <span
               className={cn(

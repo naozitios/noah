@@ -3,6 +3,7 @@ pillar: principles
 title: Why "Fail Fast" Is Wrong
 meta: Reflection
 date: 2025-03-01
+ready: false
 subsection: Product Principles
 ---
 

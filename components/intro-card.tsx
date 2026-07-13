@@ -33,7 +33,7 @@ export function IntroCard({ onNavigate }: { onNavigate?: (page: PageId) => void 
             <span aria-hidden>👋</span> I research, build, and write about {" "}
               <button onClick={() => onNavigate?.("products")} className={linkClass}>products</button>{", "}
               <button onClick={() => onNavigate?.("investments")} className={linkClass}>businesses</button>
-              , and the
+              , and the {" "}
             <button onClick={() => onNavigate?.("principles")} className={linkClass}>principles</button>
             {" "}   behind them.
           </h1>
