@@ -15,7 +15,7 @@ export function IntroCard({
       <div className="flex flex-col gap-8 sm:flex-row sm:items-start">
         <div className="relative h-28 w-28 shrink-0 overflow-hidden rounded-2xl border border-border sm:h-32 sm:w-32">
           <Image
-            src="/images/portrait.png"
+            src="/images/me.png"
             alt="Illustrated portrait of Noah"
             fill
             sizes="128px"
