@@ -53,7 +53,7 @@ export default async function CategoryPage({
                   <h2 className="text-xl font-semibold group-hover:text-primary transition-colors">
                     {entry.title}
                   </h2>
-                  <p className="mt-1 text-sm text-muted-foreground">{entry.description}</p>
+                  <p className="mt-1 text-sm text-muted-foreground line-clamp-2">{entry.description}</p>
                   {entry.date && (
                     <time className="mt-1 text-xs text-muted-foreground block">
                       {formatDate(String(entry.date))}

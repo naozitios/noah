@@ -5,6 +5,7 @@ meta: Framework
 date: 2025-06-01
 ready: false
 subsection: Business Principles
+description: "TODO"
 ---
 
 TODO

@@ -112,7 +112,7 @@ export function BentoCard({ entry }: { entry: Entry }) {
         <h3 className="mt-3 text-pretty font-sans text-xl leading-snug text-foreground sm:text-2xl">
           {title}
         </h3>
-        <p className="mt-2 text-pretty text-sm leading-relaxed text-muted-foreground line-clamp-3">
+        <p className="mt-2 text-sm leading-relaxed text-muted-foreground line-clamp-3">
           {description}
         </p>
 

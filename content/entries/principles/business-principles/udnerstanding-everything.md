@@ -5,6 +5,7 @@ meta: Essay
 date: 2025-05-01
 ready: false
 subsection: Business Principles
+description: "left right up down of the entire organisation"
 ---
 
 left right up down of the entire organisation

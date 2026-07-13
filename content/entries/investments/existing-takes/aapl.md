@@ -5,6 +5,7 @@ title: Apple a buy for the long haul
 meta: Mental model
 date: 2026-01-07
 ready: true
+description: "I am long term bullish on AAPL"
 ---
 
 ### I am long term bullish on AAPL

@@ -65,7 +65,9 @@ function parseEntryFile(file: string, pillar: string, subsection: string): Entry
   const source = fs.readFileSync(file, "utf-8")
   const { data, content } = matter(source)
   const body = content.trim()
-  const description = body.split("\n")[0] ?? body.slice(0, 200)
+  const firstLine = body.split("\n")[0] ?? body.slice(0, 200)
+  const fallback = firstLine.replace(/^#+\s*/, "")
+  const description = (data.description as string) || fallback
   const id = path.basename(file, ".md")
   return {
     id,

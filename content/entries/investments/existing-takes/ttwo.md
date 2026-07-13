@@ -5,6 +5,7 @@ title: TTWO to be a buy
 meta: Thesis
 date: 2026-01-03
 ready: true
+description: "TTWO should deliver 4x returns in one year"
 ---
 
 ## TTWO should deliver 4x returns in one year
