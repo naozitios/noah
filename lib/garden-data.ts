@@ -9,7 +9,7 @@ export type Pillar = {
   id: PillarId
   label: string
   blurb: string
-  subsections: string[]
+  subsections: Record<string, string>
 }
 
 export type Entry = {
@@ -50,18 +50,19 @@ export function getPillars(): Pillar[] {
   _pillarsCache = files.map((file) => {
     const source = fs.readFileSync(path.join(dir, file), "utf-8")
     const { data } = matter(source)
+    const subsections = (data.subsections ?? {}) as Record<string, string>
     return {
       id: data.id as PillarId,
       label: data.label as string,
       blurb: data.blurb as string,
-      subsections: (data.subsections ?? []) as string[],
+      subsections,
     }
   })
 
   return _pillarsCache
 }
 
-function parseEntryFile(file: string, pillar: string, subsection: string): Entry {
+function parseEntryFile(file: string, pillarDir: string, subsectionDir: string): Entry {
   const source = fs.readFileSync(file, "utf-8")
   const { data, content } = matter(source)
   const body = content.trim()
@@ -69,10 +70,15 @@ function parseEntryFile(file: string, pillar: string, subsection: string): Entry
   const fallback = firstLine.replace(/^#+\s*/, "")
   const description = (data.description as string) || fallback
   const id = path.basename(file, ".md")
+
+  const pillar = pillarDir as PillarId
+  const pillarData = getPillars().find((p) => p.id === pillar)
+  const subsection = pillarData?.subsections?.[subsectionDir] ?? subsectionDir
+
   return {
     id,
-    pillar: (data.pillar ?? pillar) as PillarId,
-    subsection: (data.subsection ?? subsection) as string,
+    pillar,
+    subsection,
     title: data.title as string,
     description,
     body,

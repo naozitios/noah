@@ -1,13 +1,13 @@
 ---
-pillar: investments
-subsection: Previous takes
-title: "Rigetti: Betting on the Future of Quantum Computing"
-description: "An investment thesis on Rigetti Computing, exploring the quantum computing opportunity, business model, competitive landscape, valuation, and long-term risks."
+title: 'Rigetti: Betting on the Future of Quantum Computing'
+description: >-
+  An investment thesis on Rigetti Computing, exploring the quantum computing
+  opportunity, business model, competitive landscape, valuation, and long-term
+  risks.
 meta: Mental model
-date: "2025-09-26"
+date: '2025-09-26'
 ready: true
 ---
-
 # Rigetti Computing (NASDAQ: RGTI)
 
 *June 24, 2025*
@@ -292,3 +292,4 @@ For investors comfortable with frontier technology risk, however, Rigetti repres
 The investment isn't about predicting next quarter's earnings.
 
 It's about deciding whether quantum computing becomes one of the defining technologies of the next decade.
+

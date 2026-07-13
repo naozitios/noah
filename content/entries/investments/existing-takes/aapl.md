@@ -1,13 +1,10 @@
 ---
-pillar: investments
-subsection: Existing takes
 title: Apple a buy for the long haul
 meta: Mental model
-date: 2026-01-07
+date: 2026-01-07T00:00:00.000Z
 ready: true
-description: "I am long term bullish on AAPL"
+description: I am long term bullish on AAPL
 ---
-
 ### I am long term bullish on AAPL
 
 I expect **Apple Inc (AAPL)** to be worth **$480** in December 2028 **(roughy ~100% growth)**, on a 14 EPS and a 35 P/E multiple driven by:
@@ -188,3 +185,4 @@ I expect Apple’s share price to follow an upward trend with volatility rather 
 ## 5.  Notes
 
 A $480 price target by December 2028 implies roughly 20% annualised equity growth. Relative to assumed market returns, the growth may not generate significant market return above broader market benchmarks.
+

@@ -30,17 +30,17 @@ export function IntroCard({ onNavigate }: { onNavigate?: (page: PageId) => void 
 
           <h1 className="text-pretty font-sans text-4xl leading-tight text-foreground sm:text-5xl lg:text-6xl">
             Hey, I&apos;m Noah{" "}
-            <span aria-hidden>👋</span> I research, build, and write about {" "}
-              <button onClick={() => onNavigate?.("products")} className={linkClass}>products</button>{", "}
-              <button onClick={() => onNavigate?.("investments")} className={linkClass}>businesses</button>
-              , and the {" "}
+            <span aria-hidden>👋</span> These are the bets i am making in public. From the  {" "}
+              <button onClick={() => onNavigate?.("products")} className={linkClass}>products</button> i build
+              to the <button onClick={() => onNavigate?.("investments")} className={linkClass}>investments</button> {" "} 
+              i document my thinking, track outcomes, and distill the {" "}
             <button onClick={() => onNavigate?.("principles")} className={linkClass}>principles</button>
-            {" "}   behind them.
+            {" "}   i learn along the way.
           </h1>
 
           <p className="max-w-3xl text-pretty text-lg leading-relaxed text-muted-foreground sm:text-xl">
             This garden is where I explore ideas and document my learnings. Some are principles, and some are just {" "}
-            <button onClick={() => onNavigate?.("assumptions")} className={linkClass}>assumptions</button> waiting to be proved/ disproved.
+            <button onClick={() => onNavigate?.("assumptions")} className={linkClass}>assumptions</button> waiting to be vest.
             Wander around!
           </p>
         </div>

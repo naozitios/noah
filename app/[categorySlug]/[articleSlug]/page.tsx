@@ -47,6 +47,12 @@ export default async function ArticlePage({
 
           <h1 className="text-3xl font-bold leading-tight sm:text-4xl">{entry.title}</h1>
 
+          {entry.description && (
+            <div className="mt-4 mb-6 rounded-lg border border-border bg-secondary/50 px-4 py-3 text-sm leading-relaxed text-muted-foreground">
+              {entry.description}
+            </div>
+          )}
+
           <div className="mt-8 text-base leading-relaxed space-y-4">
             <div className="prose prose-sm dark:prose-invert max-w-none">
               <Markdown content={entry.body} />

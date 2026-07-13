@@ -1,11 +1,9 @@
 ---
-pillar: principles
 title: The Generalist-Specialist Pendulum
 meta: Reflection
-date: 2025-03-01
+date: 2025-03-01T00:00:00.000Z
 ready: false
-subsection: Business Principles
-description: "importance of culture"
+description: importance of culture
 ---
-
 importance of culture
+

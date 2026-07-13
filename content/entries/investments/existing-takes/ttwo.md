@@ -1,13 +1,10 @@
 ---
-pillar: investments
-subsection: Existing takes
 title: TTWO to be a buy
 meta: Thesis
-date: 2026-01-03
+date: 2026-01-03T00:00:00.000Z
 ready: true
-description: "TTWO should deliver 4x returns in one year"
+description: TTWO should deliver 4x returns in one year
 ---
-
 ## TTWO should deliver 4x returns in one year
 
 I expect **Take-Two Interactive (TTWO)** to be worth roughly **$1000** in December 2026 **(roughy ~300% growth)**, on a 6.5B EBITDA and a 30 EV/EBITDA multiple (pre GTA6 announcement release multiple) driven by:
@@ -90,3 +87,4 @@ GTA 6 has had a history of delaying its releases, causing whipsaws of 10% drawdo
 ### Marketing budget does not exceed 1.5B
 
 The model assumes a $1.5B marketing budget within SG&A for GTA 6. If the actual spend exceeds this, we would expect a smaller EBITDA uplift, as higher costs would reduce profitability
+

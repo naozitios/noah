@@ -1,13 +1,12 @@
 ---
-pillar: investments
-subsection: Previous takes
 title: Shorting the Volatility Index (VIX)
 meta: Analysis
-date: "2025-04-10"
+date: '2025-04-10'
 ready: true
-description: "Why periods of extreme market uncertainty can create attractive opportunities to short volatility."
+description: >-
+  Why periods of extreme market uncertainty can create attractive opportunities
+  to short volatility.
 ---
-
 # Shorting the Volatility Index (VIX)
 
 *April 10, 2025*
@@ -180,3 +179,4 @@ Today's tariff-driven market has produced elevated option premiums and historica
 For that reason, I believe the more compelling investment isn't trying to predict the next headline—it's positioning for the market's eventual return to normalcy.
 
 > **The best time to short fear is often when everyone else is paying the highest price for it.**
+

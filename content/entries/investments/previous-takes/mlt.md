@@ -1,14 +1,11 @@
 ---
-pillar: investments
-subsection: Previous takes
-title: "Mapletree Logistics Trust (SGX: M44U)"
+title: 'Mapletree Logistics Trust (SGX: M44U)'
 meta: Retro
-date: "2025-05-04"
+date: '2025-05-04'
 ready: true
 accent: true
-description: "Is an APAC Logistics REIT Really Recession-Proof?"
+description: Is an APAC Logistics REIT Really Recession-Proof?
 ---
-
 # Mapletree Logistics Trust (SGX: M44U)
 
 *May 4, 2025*
@@ -279,3 +276,4 @@ Over the long run, MLT is still a quality logistics REIT.
 But quality businesses aren't always attractive investments at every point in the cycle.
 
 For now, I believe patience is the better position.
+
