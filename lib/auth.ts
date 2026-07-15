@@ -9,10 +9,18 @@ const secret = new TextEncoder().encode(
 const COOKIE_NAME = "auth_token";
 const TOKEN_EXPIRY = "24h";
 
-export async function verifyPassword(
-  password: string,
-  hash: string,
-): Promise<boolean> {
+let _passwordHash: string | null = null;
+
+export async function getPasswordHash(): Promise<string> {
+  if (!_passwordHash) {
+    const password = process.env.ADMIN_PASSWORD || "";
+    _passwordHash = await bcrypt.hash(password, 12);
+  }
+  return _passwordHash;
+}
+
+export async function verifyPassword(password: string): Promise<boolean> {
+  const hash = await getPasswordHash();
   return bcrypt.compare(password, hash);
 }
 

@@ -70,20 +70,7 @@ export async function POST(request: NextRequest) {
     );
   }
 
-  const passwordHash = process.env.ADMIN_PASSWORD_HASH;
-  if (!passwordHash) {
-    return NextResponse.json(
-      {
-        error: {
-          code: "CONFIG_ERROR",
-          message: "Admin password hash not configured",
-        },
-      },
-      { status: 500 },
-    );
-  }
-
-  const valid = await verifyPassword(password, passwordHash);
+  const valid = await verifyPassword(password);
   if (!valid) {
     return NextResponse.json(
       { error: { code: "UNAUTHORIZED", message: "Invalid password" } },
