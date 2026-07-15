@@ -5,4 +5,5 @@ blurb: Investment research, portfolio notes, and takes on companies and markets 
 subsections:
   previous-takes: Previous takes
   existing-takes: Existing takes
+  investment-principles: Investment Principles
 ---

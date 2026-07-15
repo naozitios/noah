@@ -1,21 +1,23 @@
 "use client";
 
-import { type Entry } from "@/lib/garden-data";
+import { type Pillar, type Entry } from "@/lib/garden-data";
 import { SiteHeader } from "@/components/site-header";
-import { IntroCard } from "@/components/intro-card";
 import { GardenBoard } from "@/components/garden-board";
 import { SiteFooter } from "@/components/site-footer";
 
-export function PageShell({ entries }: { entries: Entry[] }) {
+export function PillarPageClient({
+  pillar,
+  entries,
+}: {
+  pillar: Pillar;
+  entries: Entry[];
+}) {
   return (
     <div className="flex flex-col min-h-screen">
       <SiteHeader />
 
       <main className="flex-1 px-6 pt-3 pb-10 sm:px-10 sm:pt-4 sm:pb-14 lg:px-12 lg:pt-5 lg:pb-16">
-        <IntroCard />
-        <div className="mt-12 sm:mt-16">
-          <GardenBoard entries={entries} />
-        </div>
+        <GardenBoard pillar={pillar} entries={entries} />
         <SiteFooter />
       </main>
     </div>

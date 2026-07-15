@@ -1,15 +1,11 @@
 import Image from "next/image";
+import Link from "next/link";
 import { Sprout } from "lucide-react";
-import { type PageId } from "@/lib/garden-data";
 
-export function IntroCard({
-  onNavigate,
-}: {
-  onNavigate?: (page: PageId) => void;
-}) {
-  const linkClass =
-    "font-medium text-primary underline decoration-primary/30 underline-offset-4 hover:decoration-primary transition-colors cursor-pointer";
+const linkClass =
+  "font-medium text-primary underline decoration-primary/30 underline-offset-4 hover:decoration-primary transition-colors";
 
+export function IntroCard() {
   return (
     <section className="w-full">
       <div className="flex flex-col gap-8 sm:flex-row sm:items-start">
@@ -38,38 +34,26 @@ export function IntroCard({
 
           <h1 className="text-pretty font-sans text-2xl leading-snug text-foreground sm:text-3xl">
             These are the bets i am making in public. From the{" "}
-            <button
-              onClick={() => onNavigate?.("products")}
-              className={linkClass}
-            >
+            <Link href="/products" className={linkClass}>
               products
-            </button>{" "}
+            </Link>{" "}
             i build to the{" "}
-            <button
-              onClick={() => onNavigate?.("investments")}
-              className={linkClass}
-            >
+            <Link href="/investments" className={linkClass}>
               investments
-            </button>{" "}
+            </Link>{" "}
             i make. Here i document my thinking, track outcomes, and distill the{" "}
-            <button
-              onClick={() => onNavigate?.("principles")}
-              className={linkClass}
-            >
+            <Link href="/principles" className={linkClass}>
               principles
-            </button>{" "}
+            </Link>{" "}
             learnt along the way.
           </h1>
 
           <p className="max-w-3xl text-pretty text-lg leading-relaxed text-muted-foreground sm:text-xl">
             This garden is where I explore ideas and document my learnings. Some
             are principles, and some are just{" "}
-            <button
-              onClick={() => onNavigate?.("assumptions")}
-              className={linkClass}
-            >
+            <Link href="/assumptions" className={linkClass}>
               assumptions
-            </button>{" "}
+            </Link>{" "}
             waiting to be vest. Wander around!
           </p>
         </div>

@@ -1,9 +1,21 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import type { PageId } from "@/lib/garden-data";
+import { usePathname } from "next/navigation";
 
-export function useNavIndicator(activePage: PageId) {
+const VALID_PAGES = ["home", "products", "investments", "principles", "assumptions"] as const;
+type PageId = (typeof VALID_PAGES)[number];
+
+function getActivePage(pathname: string): PageId {
+  if (pathname === "/") return "home";
+  const segment = pathname.split("/")[1];
+  if (VALID_PAGES.includes(segment as PageId)) return segment as PageId;
+  return "home";
+}
+
+export function useNavIndicator() {
+  const pathname = usePathname();
+  const activePage = getActivePage(pathname);
   const navRef = useRef<HTMLDivElement>(null);
   const [indicator, setIndicator] = useState({ left: 0, width: 0 });
 
@@ -19,5 +31,5 @@ export function useNavIndicator(activePage: PageId) {
     }
   }, [activePage]);
 
-  return { navRef, indicator };
+  return { navRef, indicator, activePage };
 }

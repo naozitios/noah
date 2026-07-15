@@ -1,52 +1,38 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { type Pillar, type Entry, type PillarId } from "@/lib/garden-data";
+import { useState } from "react";
+import { type Pillar, type Entry } from "@/lib/garden-data";
 import { BentoCard } from "@/components/bento-card";
 
 export function GardenBoard({
-  pillars,
   entries,
-  initialPillar,
+  pillar,
 }: {
-  pillars: Pillar[];
   entries: Entry[];
-  initialPillar?: PillarId;
+  pillar?: Pillar;
 }) {
   const [subsectionFilter, setSubsectionFilter] = useState("");
 
-  const activePillar = initialPillar
-    ? pillars.find((p) => p.id === initialPillar)
-    : null;
-
-  const pillarEntries = initialPillar
-    ? entries.filter((e) => e.pillar === initialPillar)
-    : entries;
-
   const subsections = [
-    ...new Set(pillarEntries.map((e) => e.subsection).filter(Boolean)),
+    ...new Set(entries.map((e) => e.subsection).filter(Boolean)),
   ] as string[];
 
-  useEffect(() => {
-    setSubsectionFilter("");
-  }, [initialPillar]);
-
   const filteredEntries = subsectionFilter
-    ? pillarEntries.filter((e) => e.subsection === subsectionFilter)
-    : pillarEntries;
+    ? entries.filter((e) => e.subsection === subsectionFilter)
+    : entries;
 
   return (
     <div className="flex flex-col gap-10">
-      {activePillar && (
+      {pillar && (
         <section className="max-w-3xl">
-          <h2 className="text-2xl font-bold mb-2">{activePillar.label}</h2>
+          <h2 className="text-2xl font-bold mb-2">{pillar.label}</h2>
           <p className="text-muted-foreground text-base leading-relaxed">
-            {activePillar.blurb}
+            {pillar.blurb}
           </p>
         </section>
       )}
 
-      {activePillar && subsections.length > 1 && (
+      {subsections.length > 1 && (
         <div className="flex items-center gap-2 flex-wrap">
           <button
             onClick={() => setSubsectionFilter("")}

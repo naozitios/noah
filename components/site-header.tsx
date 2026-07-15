@@ -12,41 +12,23 @@ import {
   Menu,
   X,
 } from "lucide-react";
+import Link from "next/link";
 import { cn } from "@/lib/utils";
-import type { PageId } from "@/lib/garden-data";
 import { useTheme } from "next-themes";
 import { useNavIndicator } from "@/hooks/use-nav-indicator";
 import { useState } from "react";
 
-const navLinks: { id: PageId; label: string; icon: React.ReactNode }[] = [
-  { id: "home", label: "Home", icon: <Home className="h-4 w-4" /> },
-  { id: "products", label: "Products", icon: <Package className="h-4 w-4" /> },
-  {
-    id: "investments",
-    label: "Investments",
-    icon: <TrendingUp className="h-4 w-4" />,
-  },
-  {
-    id: "principles",
-    label: "Principles",
-    icon: <BookOpen className="h-4 w-4" />,
-  },
-  {
-    id: "assumptions",
-    label: "Assumptions",
-    icon: <Lightbulb className="h-4 w-4" />,
-  },
+const navLinks = [
+  { id: "home", label: "Home", icon: <Home className="h-4 w-4" />, href: "/" },
+  { id: "products", label: "Products", icon: <Package className="h-4 w-4" />, href: "/products" },
+  { id: "investments", label: "Investments", icon: <TrendingUp className="h-4 w-4" />, href: "/investments" },
+  { id: "principles", label: "Principles", icon: <BookOpen className="h-4 w-4" />, href: "/principles" },
+  { id: "assumptions", label: "Assumptions", icon: <Lightbulb className="h-4 w-4" />, href: "/assumptions" },
 ];
 
-export function SiteHeader({
-  activePage,
-  onNavigate,
-}: {
-  activePage: PageId;
-  onNavigate: (page: PageId) => void;
-}) {
+export function SiteHeader() {
   const { theme, setTheme } = useTheme();
-  const { navRef, indicator } = useNavIndicator(activePage);
+  const { navRef, indicator, activePage } = useNavIndicator();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
@@ -72,10 +54,10 @@ export function SiteHeader({
           style={{ left: indicator.left, width: indicator.width }}
         />
         {navLinks.map((link) => (
-          <button
+          <Link
             key={link.id}
             data-page={link.id}
-            onClick={() => onNavigate(link.id)}
+            href={link.href}
             className={cn(
               "flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-sm font-medium transition-colors duration-300 sm:px-3",
               activePage === link.id
@@ -85,7 +67,7 @@ export function SiteHeader({
           >
             {link.icon}
             <span className="hidden sm:inline">{link.label}</span>
-          </button>
+          </Link>
         ))}
       </div>
 
@@ -93,12 +75,10 @@ export function SiteHeader({
         <div className="absolute top-full left-0 right-0 border-b border-border bg-background sm:hidden z-50">
           <div className="flex flex-col py-2">
             {navLinks.map((link) => (
-              <button
+              <Link
                 key={link.id}
-                onClick={() => {
-                  onNavigate(link.id);
-                  setMobileMenuOpen(false);
-                }}
+                href={link.href}
+                onClick={() => setMobileMenuOpen(false)}
                 className={cn(
                   "flex items-center gap-2 px-4 py-2.5 text-sm font-medium transition-colors",
                   activePage === link.id
@@ -108,7 +88,7 @@ export function SiteHeader({
               >
                 {link.icon}
                 {link.label}
-              </button>
+              </Link>
             ))}
           </div>
         </div>
@@ -138,7 +118,7 @@ export function SiteHeader({
           GitHub
         </a>
         <a
-          href="/api/media/e83b3400-2370-49f9-a5c3-ba24eee174e3/file"
+          href="/uploads/NoahTeo.pdf"
           className="flex items-center gap-1 text-sm text-muted-foreground transition-colors hover:text-foreground"
           target="_blank"
           rel="noreferrer"
