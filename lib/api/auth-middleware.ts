@@ -1,21 +1,20 @@
 import { NextRequest } from "next/server";
-import { verifyToken } from "@/lib/auth";
+import { verifyToken, getAuthToken } from "@/lib/auth";
 import { AppError } from "@/lib/api/errors";
 
 export async function requireAuth(
   request: NextRequest,
 ): Promise<{ username: string }> {
-  const authHeader = request.headers.get("authorization");
+  const token = getAuthToken(request);
 
-  if (!authHeader || !authHeader.startsWith("Bearer ")) {
+  if (!token) {
     throw new AppError(
       "UNAUTHORIZED",
-      "Missing or invalid authorization header",
+      "Authentication required",
       401,
     );
   }
 
-  const token = authHeader.split(" ")[1];
   const user = await verifyToken(token);
 
   if (!user) {

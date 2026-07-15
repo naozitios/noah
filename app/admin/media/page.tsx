@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useRef, useCallback } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useRouter } from "next/navigation";
 
 interface MediaItem {
@@ -19,47 +19,30 @@ export default function MediaPage() {
   const fileRef = useRef<HTMLInputElement>(null);
   const router = useRouter();
 
-  const getAuthHeaders = () => {
-    const token = localStorage.getItem("admin_token");
-    if (!token) {
-      router.push("/admin/login");
-      return null;
-    }
-    return { Authorization: `Bearer ${token}` };
-  };
-
-  const handleUnauthorized = (res: Response) => {
-    if (res.status === 401) {
-      localStorage.removeItem("admin_token");
-      router.push("/admin/login");
-    }
-  };
-
-  const load = useCallback(() => {
-    const headers = getAuthHeaders();
-    if (!headers) return;
-
+  const load = async () => {
     setLoading(true);
-    fetch("/api/media", { headers })
-      .then((res) => {
-        handleUnauthorized(res);
-        return res.json();
-      })
-      .then((data) => setMedia(data.media || []))
-      .catch(() => setMedia([]))
-      .finally(() => setLoading(false));
-  }, [router]);
+    try {
+      const res = await fetch("/api/media");
+      if (res.status === 401) {
+        router.push("/admin/login");
+        return;
+      }
+      const data = await res.json();
+      setMedia(data.media || []);
+    } catch {
+      setMedia([]);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
     load();
-  }, [load]);
+  }, []);
 
   const upload = async () => {
     const file = fileRef.current?.files?.[0];
     if (!file) return;
-
-    const headers = getAuthHeaders();
-    if (!headers) return;
 
     setUploading(true);
     const form = new FormData();
@@ -69,9 +52,11 @@ export default function MediaPage() {
       const res = await fetch("/api/media/upload", {
         method: "POST",
         body: form,
-        headers,
       });
-      handleUnauthorized(res);
+      if (res.status === 401) {
+        router.push("/admin/login");
+        return;
+      }
       load();
     } catch (err) {
       console.error("Upload failed", err);
@@ -84,11 +69,11 @@ export default function MediaPage() {
   const remove = async (id: string) => {
     if (!confirm("Delete this file?")) return;
 
-    const headers = getAuthHeaders();
-    if (!headers) return;
-
-    const res = await fetch(`/api/media/${id}`, { method: "DELETE", headers });
-    handleUnauthorized(res);
+    const res = await fetch(`/api/media/${id}`, { method: "DELETE" });
+    if (res.status === 401) {
+      router.push("/admin/login");
+      return;
+    }
     load();
   };
 

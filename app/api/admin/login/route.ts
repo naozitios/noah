@@ -1,10 +1,69 @@
 import { NextRequest, NextResponse } from "next/server";
-import { createToken, verifyPassword } from "@/lib/auth";
+import {
+  createToken,
+  verifyPassword,
+  setAuthCookie,
+} from "@/lib/auth";
+
+const rateLimitMap = new Map<string, { count: number; resetAt: number }>();
+
+function getRateLimitResult(ip: string): { allowed: boolean; retryAfter: number } {
+  const now = Date.now();
+  const record = rateLimitMap.get(ip);
+
+  if (!record || now > record.resetAt) {
+    rateLimitMap.set(ip, { count: 1, resetAt: now + 15 * 60 * 1000 });
+    return { allowed: true, retryAfter: 0 };
+  }
+
+  record.count += 1;
+  if (record.count > 5) {
+    return { allowed: false, retryAfter: Math.ceil((record.resetAt - now) / 1000) };
+  }
+
+  return { allowed: true, retryAfter: 0 };
+}
+
+setInterval(
+  () => {
+    const now = Date.now();
+    for (const [ip, record] of rateLimitMap) {
+      if (now > record.resetAt) rateLimitMap.delete(ip);
+    }
+  },
+  60 * 1000,
+);
 
 export async function POST(request: NextRequest) {
-  const { password } = await request.json();
+  const ip =
+    request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
+    "unknown";
 
-  if (!password) {
+  const { allowed, retryAfter } = getRateLimitResult(ip);
+  if (!allowed) {
+    return NextResponse.json(
+      {
+        error: {
+          code: "RATE_LIMITED",
+          message: `Too many attempts. Try again in ${retryAfter} seconds.`,
+        },
+      },
+      { status: 429 },
+    );
+  }
+
+  let password: string;
+  try {
+    const body = await request.json();
+    password = body.password;
+  } catch {
+    return NextResponse.json(
+      { error: { code: "BAD_REQUEST", message: "Invalid request body" } },
+      { status: 400 },
+    );
+  }
+
+  if (!password || password.length > 128) {
     return NextResponse.json(
       { error: { code: "BAD_REQUEST", message: "Password is required" } },
       { status: 400 },
@@ -33,5 +92,7 @@ export async function POST(request: NextRequest) {
   }
 
   const token = await createToken({ username: "admin" });
-  return NextResponse.json({ token });
+  const response = NextResponse.json({ success: true });
+  setAuthCookie(response, token);
+  return response;
 }

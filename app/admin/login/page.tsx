@@ -22,12 +22,11 @@ export default function LoginPage() {
       });
 
       if (!res.ok) {
-        setError("Invalid password");
+        const data = await res.json();
+        setError(data.error?.message || "Invalid password");
         return;
       }
 
-      const data = await res.json();
-      localStorage.setItem("admin_token", data.token);
       router.push("/admin/media");
     } catch {
       setError("Login failed");
@@ -50,6 +49,7 @@ export default function LoginPage() {
           className="w-full border border-border rounded-lg px-4 py-2 text-sm bg-card mb-4"
           placeholder="Password"
           autoFocus
+          autoComplete="current-password"
         />
         {error && <p className="text-sm text-destructive mb-4">{error}</p>}
         <button
