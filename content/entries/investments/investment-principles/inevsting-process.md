@@ -6,6 +6,7 @@ description: >-
 meta: Mental model
 date: "2026-07-15"
 ready: true
+pin: true
 ---
 
 # Investing is About Following Where Money Wants to Go

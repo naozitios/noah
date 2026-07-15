@@ -64,7 +64,8 @@ export function BentoCard({ entry }: { entry: Entry }) {
     };
   }, []);
 
-  const { title, description, meta, status, date, subsection, ready } = entry;
+  const { title, description, meta, status, date, subsection, ready, pin } =
+    entry;
 
   return (
     <a
@@ -72,7 +73,11 @@ export function BentoCard({ entry }: { entry: Entry }) {
       href={`/${entry.pillar}/${entry.id}`}
       className={cn(
         "group relative overflow-hidden rounded-3xl border bg-card p-6 transition-all duration-300 hover:scale-[1.02] hover:shadow-xl h-[280px]",
-        ready ? "border-border" : "border-red-500/50 ring-1 ring-red-500/30",
+        pin
+          ? "border-amber-500/40 ring-1 ring-amber-500/20"
+          : ready
+            ? "border-border"
+            : "border-red-500/50 ring-1 ring-red-500/30",
       )}
       style={
         {
@@ -93,6 +98,11 @@ export function BentoCard({ entry }: { entry: Entry }) {
             {!ready && (
               <span className="rounded-full bg-red-500/15 px-1.5 py-0.5 text-[10px] font-medium text-red-500">
                 DRAFT
+              </span>
+            )}
+            {pin && (
+              <span className="rounded-full bg-amber-500/15 px-1.5 py-0.5 text-[10px] font-medium text-amber-500">
+                PINNED
               </span>
             )}
           </div>

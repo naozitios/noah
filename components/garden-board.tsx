@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { type Pillar, type Entry } from "@/lib/garden-data";
 import { BentoCard } from "@/components/bento-card";
 
@@ -13,13 +13,29 @@ export function GardenBoard({
 }) {
   const [subsectionFilter, setSubsectionFilter] = useState("");
 
-  const subsections = [
-    ...new Set(entries.map((e) => e.subsection).filter(Boolean)),
-  ] as string[];
+  const sortedEntries = useMemo(() => {
+    const pinned = entries.filter((e) => e.pin);
+    const rest = entries.filter((e) => !e.pin);
+    return [...pinned, ...rest];
+  }, [entries]);
+
+  const subsections = useMemo(() => {
+    const present = new Set(entries.map((e) => e.subsection).filter(Boolean));
+    if (pillar) {
+      const orderMap = new Map<string, number>();
+      Object.entries(pillar.subsections).forEach(([, displayName], i) => {
+        orderMap.set(displayName, i);
+      });
+      return [...present].sort(
+        (a, b) => (orderMap.get(a) ?? 99) - (orderMap.get(b) ?? 99),
+      );
+    }
+    return [...present];
+  }, [entries, pillar]);
 
   const filteredEntries = subsectionFilter
-    ? entries.filter((e) => e.subsection === subsectionFilter)
-    : entries;
+    ? sortedEntries.filter((e) => e.subsection === subsectionFilter)
+    : sortedEntries;
 
   return (
     <div className="flex flex-col gap-10">

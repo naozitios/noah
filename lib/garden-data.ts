@@ -26,6 +26,7 @@ export type Entry = {
   image?: string;
   readingTime: number;
   ready: boolean;
+  pin: boolean;
 };
 
 function isProduction(): boolean {
@@ -93,6 +94,7 @@ function parseEntryFile(
     image: data.image as string | undefined,
     readingTime: calculateReadingTime(body),
     ready: data.ready === true,
+    pin: data.pin === true,
   };
 }
 
