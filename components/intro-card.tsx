@@ -33,7 +33,7 @@ export function IntroCard() {
           </h1>
 
           <h1 className="text-pretty font-sans text-2xl leading-snug text-foreground sm:text-3xl">
-            These are the bets i am making in public. From the{" "}
+            These are the bets i am making in public! From the{" "}
             <Link href="/products" className={linkClass}>
               products
             </Link>{" "}
@@ -41,7 +41,7 @@ export function IntroCard() {
             <Link href="/investments" className={linkClass}>
               investments
             </Link>{" "}
-            i make. Here i document my thinking, track outcomes, and distill the{" "}
+            i make - here i document my thinking, track outcomes, and distill the{" "}
             <Link href="/principles" className={linkClass}>
               principles
             </Link>{" "}
@@ -49,12 +49,7 @@ export function IntroCard() {
           </h1>
 
           <p className="max-w-3xl text-pretty text-lg leading-relaxed text-muted-foreground sm:text-xl">
-            This garden is where I explore ideas and document my learnings. Some
-            are principles, and some are just{" "}
-            <Link href="/assumptions" className={linkClass}>
-              assumptions
-            </Link>{" "}
-            waiting to be vest. Wander around!
+            Glad you came to visit my digital garden, wander around! 🗺️
           </p>
         </div>
       </div>
